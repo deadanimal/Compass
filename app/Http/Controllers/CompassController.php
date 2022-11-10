@@ -32,6 +32,10 @@ class CompassController extends Controller
 
     public function jual_compass(Request $request) {}
 
+    public function sewakan_compass(Request $request) {}
+
+    public function tarik_sewa_compass(Request $request) {}
+
     public function beli_gem(Request $request) {}
 
     public function jual_gem(Request $request) {}
