@@ -20,33 +20,74 @@
             <div id="map"></div>
         </div>
         <div class="col-4">
-            Puzzle - here if exist...
+
+            <div class="card">
+                <div class="card-header">
+                    Current Location
+                </div>
+                <div class="card-body">
+                    <div id="lat"></div>
+                    <div id="lon"></div>
+                    <div id="res"></div>
+                </div>
+            </div>            
+
+            <div class="card mt-3">
+                <div class="card-header">
+                    Puzzle
+                </div>
+                <div class="card-body">
+                </div>
+            </div>
+
         </div>
     </div>
     <div class="row py-5">
-        <div class="col">
 
-            <div class="table-responsive">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">ID</th>
-                            <th scope="col">Type</th>
-                            <th scope="col">Level</th>
-                            <th scope="col">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>mdo</td>
-                            <td>view</td>
-                        </tr>
-                    </tbody>
-                </table>
+
+        <div class="col-4">
+
+            <div class="card">
+                <div class="card-header">
+                    Cipta Lokasi
+                </div>
+                <div class="card-body">
+                </div>
+            </div>
+
+        </div>        
+        <div class="col-8">
+
+            <div class="card">
+                <div class="card-header">
+                    Cipta Lokasi
+                </div>
+                <div class="card-body">
+
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Type</th>
+                                    <th scope="col">Level</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>Mark</td>
+                                    <td>Otto</td>
+                                    <td>mdo</td>
+                                    <td>view</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
             </div>
 
 
@@ -67,7 +108,20 @@
         getLocation();
 
         function showPosition(position) {
-            console.log(position.coords);
+            map.panTo(new L.LatLng(position.coords.latitude, position.coords.longitude));
+            document.getElementById("lat").innerHTML = "Latitude: " + position.coords.latitude; 
+            document.getElementById("lon").innerHTML = "Longitude: " + position.coords.longitude;
+            axios.post('/kedudukan', {
+                    latitude: position.coords.latitude,
+                    longitude: position.coords.longitude
+                })
+                .then(function(response) {
+                    document.getElementById("res").innerHTML = response.data;
+                    console.log(response);
+                })
+                .catch(function(error) {
+                    console.log(error);
+                });
         }
 
         let map, markers = [];

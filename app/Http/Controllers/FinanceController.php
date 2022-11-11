@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Wallet;
 use App\Models\Token;
 use App\Models\TokenBalance;
+use App\Models\TokenPurchase;
+use App\Models\TokenMint;
 use App\Models\TokenTransaction;
 
 class FinanceController extends Controller

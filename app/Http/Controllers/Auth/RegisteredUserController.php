@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Compass;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
@@ -44,6 +45,15 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
+
+        $compass = New Compass;
+        $compass->user_id = $user->id;
+        $compass->compass_type = "broken";
+        $compass->compass_rarity = "common";
+        $compass->save();        
+        
+        $user->compass_id = $compass->id;
+        $user->save();
 
         event(new Registered($user));
 

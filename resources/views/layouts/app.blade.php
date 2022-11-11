@@ -8,7 +8,17 @@
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <style>
+        .footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
     @yield('styles')
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 
 <body>
@@ -21,15 +31,9 @@
 
             <ul class="nav nav-pills">
                 <li class="nav-item"><a class="nav-link" href="/compass">Compass</a></li>
-                <li class="nav-item"><a class="nav-link" href="/finance">Finance</a></li>
-                <li class="nav-item"><a class="nav-link" href="/play">Play</a></li>
-                @role('admin')
-                    {{-- <li class="nav-item"><a class="nav-link" href="/admin/compass">Compass</a></li> --}}
-                    <li class="nav-item"><a class="nav-link" href="/admin/lokasi">Lokasi</a></li>
-                    {{-- <li class="nav-item"><a class="nav-link" href="/admin/puzzle">Puzzle</a></li> --}}
-                    <li class="nav-item"><a class="nav-link" href="/admin/token">Token</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/admin/user">User</a></li>
-                @endrole
+                <li class="nav-item"><a class="nav-link" href="/friend">Friend</a></li>
+                <li class="nav-item"><a class="nav-link" href="/token">Token</a></li>
+                <a href="/play"><button type="button" class="btn btn-success">Play</button></a>
             </ul>
         </header>
     </div>
@@ -37,8 +41,22 @@
     <div class="container">
         @yield('content')
     </div>
+
+    <footer class="mt-3 py-3 bg-light">
+        <div class="container">
+            <span class="text-muted">2022 &copy; Pipeline Network Sdn. Bhd.
+                @role('admin')                    
+                    <a href="/admin/lokasi">Lokasi</a> |
+                    <a href="/admin/token">Token</a> | 
+                    <a href="/admin/user">User</a> 
+                @endrole
+            </span>
+        </div>
+    </footer>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous">
+        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous">    
+
     </script>
     @yield('scripts')
 </body>

@@ -23,6 +23,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'compass_id',
+        'username',
     ];
 
     /**
@@ -48,4 +50,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(TokenBalance::class);
     }     
+
+    public function compasses()
+    {
+        return $this->hasMany(Compass::class);
+    }      
 }

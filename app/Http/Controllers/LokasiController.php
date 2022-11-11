@@ -16,6 +16,7 @@ class LokasiController extends Controller
 {
 
     public function senarai(Request $request) {
+        //$lokasis = Lokasi::whereDistance('coord', new Point(2.9240584, 101.6364349), '<', 100)->get();
         $lokasis = Lokasi::all();
         return view('lokasis', compact('lokasis'));
     }
@@ -50,9 +51,15 @@ class LokasiController extends Controller
         $user = $request->user();
         $duduk = New Kedudukan;
         $duduk->user_id = $user->id;
-        $duduk->latitude = $request->latitude;
-        $duduk->longitude = $request->longitude;
-        $duduk->save();         
+        $duduk->coord = new Point($request->latitude, $request->longitude);
+        $duduk->save();     
+
+        $lokasis = Lokasi::whereDistance('coord', new Point($request->latitude, $request->longitude), '<', 0.01)->get();    
+        if ($lokasis) {
+            return $lokasis->toJson(JSON_PRETTY_PRINT);
+        } else {
+            return;    
+        }        
     }
 
     public function senarai_kedudukan(Request $request) {

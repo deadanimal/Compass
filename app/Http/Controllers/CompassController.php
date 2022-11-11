@@ -25,7 +25,17 @@ class CompassController extends Controller
     public function senarai_compass(Request $request) {
         $compas = Compass::all();
         return view('compasses', compact('compas'));
-    }    
+    }  
+    
+    public function satu_compass(Request $request) {
+        $user = $request->user();
+        $id = $request->route('id');
+        $compa = Compass::where([
+            ['id', '=', $id],
+            ['user_id', '=', $user->id]
+        ])->first();
+        return view('compass_satu', compact('compa'));
+    }      
 
     public function cipta_compass(Request $request) {
         $user = $request->user();
