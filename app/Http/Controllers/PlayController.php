@@ -8,6 +8,7 @@ use App\Models\Wallet;
 use App\Models\TokenBalance;
 use App\Models\Lokasi;
 use App\Models\Puzzle;
+use App\Models\PuzzleAnswer;
 
 class PlayController extends Controller
 {
@@ -25,16 +26,30 @@ class PlayController extends Controller
         ]));
     }
 
+    public function senarai_puzzle(Request $request) {
+        $puzzles = Puzzle::all();
+        return view('puzzles', compact('puzzles'));
+    }    
+
     public function cipta_puzzle(Request $request) {
         $user = $request->user();
-        $compass_id = $request->compass_id;
 
         $puzzle = New Puzzle;
-        $puzzle->name = $request->name;
-        $puzzle->jenis = $request->jenis;
+        $puzzle->question = $request->question;
+        $puzzle->ropt = $request->ropt;
+        $puzzle->opt1 = $request->opt1;
+        $puzzle->opt2 = $request->opt2;
+        $puzzle->opt3 = $request->opt3;
+        $puzzle->opt4 = $request->opt4;
         $puzzle->user_id = $user->id;
-        $puzzle->compass_id = $compass_id;
-        $puzzle->save();          
+        $puzzle->save();    
+
+        $id = $request->route('id');
+        if($id) {
+            $lokasi = Lokasi::find($id);
+            $lokasi->puzzles()->attach($puzzle);
+        }        
+        return back();      
     }
 
     public function kemaskini_puzzle(Request $request) {}

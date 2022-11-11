@@ -5,13 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Puzzle extends Model
+class CompassSale extends Model
 {
     use HasFactory;
-
-    public function lokasis()
-    {
-        return $this->belongsToMany(Lokasi::class);
-    }       
 }
-
