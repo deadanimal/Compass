@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class TokenPurchase extends Model
 {
     use HasFactory;
+
+    public function invoice()
+    {
+        return $this->belongsTo(Invoice::class);
+    }       
 }

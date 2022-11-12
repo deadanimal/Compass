@@ -120,8 +120,8 @@
                                     @foreach ($compas as $compa)
                                         <tr>
                                             <td>{{ $compa->id }}</td>
-                                            <td>{{ $compa->compass_type }}</td>
-                                            <td>{{ $compa->compass_rarity }}</td>
+                                            <td>{{ ucfirst($compa->compass_type) }}</td>
+                                            <td>{{ ucfirst($compa->compass_rarity) }}</td>
                                             <td>{{ $compa->compass_level }}</td>
                                             <td>
                                                 <div class="btn-group" role="group">

@@ -22,7 +22,7 @@
 </head>
 
 <body>
-
+    @include('sweetalert::alert')
     <div class="container">
         <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
             <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
@@ -44,7 +44,7 @@
 
     <footer class="mt-3 py-3 bg-light">
         <div class="container">
-            <span class="text-muted">2022 &copy; Pipeline Network Sdn. Bhd.
+            <span class="text-muted">2022 &copy; DCB Platform Sdn. Bhd.
                 @role('admin')                    
                     <a href="/admin/lokasi">Lokasi</a> |
                     <a href="/admin/token">Token</a> | 
