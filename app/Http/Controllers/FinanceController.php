@@ -176,7 +176,7 @@ class FinanceController extends Controller
                 $invoice->status = 'Paid';
                 $invoice->save();
 
-                $purchase = TokenPurchase::find($invoice->purchase_id);
+                $purchase = TokenPurchase::find($invoice->token_purchase_id);
                 $purchase->completed = true;
                 $purchase->save();
 
