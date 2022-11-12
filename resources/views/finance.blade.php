@@ -63,7 +63,7 @@
 
                     <div class="card">
                         <div class="card-header">
-                            Token Purchase List
+                            Token Purchase
                         </div>
                         <div class="card-body">
 
@@ -71,21 +71,27 @@
                                 <table class="table">
                                     <thead>
                                         <tr>
-                                            <th scope="col">#</th>
-                                            <th scope="col">ID</th>
-                                            <th scope="col">Type</th>
-                                            <th scope="col">Level</th>
+                                            <th scope="col">Datetime</th>
+                                            <th scope="col">Token</th>
+                                            <th scope="col">Amount</th>
                                             <th scope="col">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @foreach($purchases as $purchase)
                                         <tr>
-                                            <th scope="row">1</th>
-                                            <td>Mark</td>
-                                            <td>Otto</td>
-                                            <td>@mdo</td>
-                                            <td>@mdo</td>
+                                            <td>{{$purchase->created_at}}</td>
+                                            <td>
+                                                @if($purchase->token_id == 1)
+                                                    Gold
+                                                @else
+                                                    Wisdom
+                                                @endif
+                                            </td>
+                                            <td>{{$purchase->amount}}</td>
+                                            <td>-</td>
                                         </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
@@ -101,13 +107,13 @@
         </div>
     </div>
 
-    <div class="row mt-3">
+    {{-- <div class="row mt-3">
 
         <div class="col-3">
 
             <div class="card">
                 <div class="card-header">
-                    Cipta Lokasi
+                    Send Token
                 </div>
                 <div class="card-body">
 
@@ -137,7 +143,7 @@
 
         <div class="col-9">
         </div>
-    </div>
+    </div> --}}
 @endsection
 
 

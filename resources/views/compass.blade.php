@@ -14,7 +14,7 @@
                     <form action="/compass" method="POST">
                         @csrf
                         <div class="mb-3">
-                            <label class="form-label">Compass Type</label>
+                            <label class="form-label">Type</label>
                             <select class="form-select" name="compass_type" id="compass_type"
                                 onchange="calculateCompassPrice()">
                                 <option value="walker" selected>Walker</option>
@@ -24,7 +24,7 @@
                             </select>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Compass Rarity</label>
+                            <label class="form-label">Rarity</label>
                             <select class="form-select" name="compass_rarity" id="compass_rarity"
                                 onchange="calculateCompassPrice()">
                                 <option value="common" selected>Common</option>
@@ -33,11 +33,7 @@
                             </select>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Randomness, %</label>
-                            <input type="number" name="randomness" min=1 max=99 step=1 value=90 class="form-control">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Compass Price, GOLD</label>
+                            <label class="form-label">Price, GOLD</label>
                             <input type="number" class="form-control" id="compass_price" disabled>
                         </div>
                         <button type="submit" class="btn btn-primary">Build Compass</button>
@@ -66,9 +62,18 @@
                             </select>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Randomness, %</label>
-                            <input type="number" name="randomness" min=1 max=99 step=1 value=90 class="form-control">
-                        </div>
+                            <label class="form-label">Rarity</label>
+                            <select class="form-select" name="gem_rarity" id="gem_rarity"
+                                onchange="calculateGemPrice()">
+                                <option value="common" selected>Common</option>
+                                <option value="uncommon">Uncommon</option>
+                                <option value="rare">Rare</option>
+                            </select>
+                        </div>     
+                        <div class="mb-3">
+                            <label class="form-label">Price, GOLD</label>
+                            <input type="number" class="form-control" id="gem_price" disabled>
+                        </div>                                           
                         <button type="submit" class="btn btn-primary">Build Gem</button>
                     </form>
 
