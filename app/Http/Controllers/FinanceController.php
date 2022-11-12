@@ -173,7 +173,7 @@ class FinanceController extends Controller
                 $invoice->status = 'Paid';
                 $invoice->save();
 
-                $purchase = $invoice->purchase;
+                $purchase = $invoice->purchase();
                 $purchase->completed = true;
                 $purchase->save();
 
