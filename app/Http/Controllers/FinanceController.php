@@ -41,8 +41,18 @@ class FinanceController extends Controller
         $balances = TokenBalance::where('user_id', $user->id)->get();
         $txs = TokenTransaction::where('user_id', $user->id)->get();
 
+        $gold_balance = TokenBalance::where([
+            ['user_id','=', $user->id],
+            ['token_id','=', 1]
+        ])->first();
+
+        $wisdom_balance = TokenBalance::where([
+            ['user_id','=', $user->id],
+            ['token_id','=', 2]
+        ])->first();        
+
         return view('finance', compact([
-            'user', 'wallets', 'balances', 'txs'
+            'user', 'wallets', 'balances', 'txs', 'gold_balance', 'wisdom_balance'
         ]));
     }
 

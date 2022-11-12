@@ -5,6 +5,23 @@
         <div class="col-3">
 
             <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <h5>Gold</h5>
+                            <p>{{$gold_balance->amount}}</p>
+                        </div>
+                        <div class="col">
+                            <h5>Wisdom</h5>
+                            <p>{{$wisdom_balance->amount}}</p>       
+                        </div>
+                    </div>
+             
+
+                </div>
+            </div>            
+
+            <div class="card mt-3">
                 <div class="card-header">
                     Purchase Token
                 </div>
