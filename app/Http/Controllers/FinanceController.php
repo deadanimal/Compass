@@ -136,7 +136,10 @@ class FinanceController extends Controller
         $purchase->invoice_id = $invoice->id;
         $purchase->token_id = $token_id;
         $purchase->amount = $token_amount;
-        $purchase->save();        
+        $purchase->save();
+
+        $invoice->token_purchase_id = $purchase->id; 
+        $invoice->save();        
 
         return redirect($billplz_data['url']);
     }
@@ -173,7 +176,7 @@ class FinanceController extends Controller
                 $invoice->status = 'Paid';
                 $invoice->save();
 
-                $purchase = $invoice->purchase();
+                $purchase = TokenPurchase::find($invoice->purchase_id);
                 $purchase->completed = true;
                 $purchase->save();
 
