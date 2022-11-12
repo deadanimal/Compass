@@ -4,26 +4,53 @@
 
     <div class="row">
         <div class="col-3">
-            - list of friends
+
+            <div class="card">
+                <div class="card-header">
+                    - list of friends
+                </div>
+                <div class="card-body">
+                </div>
+            </div>            
+            
 
         </div>
-        <div class="col-3">
-            - latest friends
-        </div>
-        <div class="col-6">
-            - - -
+
+        <div class="col-9">
+            <div class="card">
+                <div class="card-header">
+                    friends latest activity
+                </div>
+                <div class="card-body">
+                </div>
+            </div>  
         </div>        
     </div>
 
-    <div class="row">
+    <div class="row mt-3">
         <div class="col-3">
-            - list of friends
+
+            <div class="card">
+                <div class="card-header">
+                    - list of students
+                </div>
+                <div class="card-body">
+                </div>
+            </div>            
+            
 
         </div>
+
         <div class="col-9">
-            - - -
+            <div class="card">
+                <div class="card-header">
+                    students latest activity
+                </div>
+                <div class="card-body">
+                </div>
+            </div>  
         </div>        
-    </div>    
+    </div>
 
 
 @endsection

@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('', [UserController::class, 'home']);
 Route::get('friend/{username}', [UserController::class, 'satu_friend']);
+Route::post('friend/{username}', [UserController::class, 'register_student']);
 
 Route::middleware(['auth'])->group(function () {
     
