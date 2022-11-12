@@ -81,7 +81,7 @@ class FinanceController extends Controller
         $tx->save();            
     }
 
-    public function beli_token(Request $request) {
+    public function buy_token(Request $request) {
 
         $token_name = $request->token;
         $token_amount = $request->amount;
