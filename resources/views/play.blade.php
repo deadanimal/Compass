@@ -34,9 +34,13 @@
 
             <div class="card mt-3">
                 <div class="card-header">
-                    Puzzle
+                    Play Mode
                 </div>
                 <div class="card-body">
+                    - traveller, answer question, GOLD
+                    - trader, find trading ports and exchange gems/badges/compass material, GOLD/FIAT
+                    - explorer, update locations and image editing, WISDOM
+                    - diplomat, create & conduct multiplayer games, WISDOM
                 </div>
             </div>
 

@@ -17,7 +17,7 @@
                             <label class="form-label">Type</label>
                             <select class="form-select" name="compass_type" id="compass_type"
                                 onchange="calculateCompassPrice()">
-                                <option value="walker" selected>Walker</option>
+                                <option value="traveler" selected>Traveler</option>
                                 <option value="trader">Trader</option>
                                 <option value="diplomat">Diplomat</option>
                                 <option value="explorer">Explorer</option>
@@ -54,11 +54,11 @@
                         @csrf
                         <div class="mb-3">
                             <label class="form-label">Gem Type</label>
-                            <select class="form-select" name="gem_type" id="gem_type">
-                                <option value="walker" selected>Walker</option>
-                                <option value="trader">Trader</option>
-                                <option value="diplomat">Diplomat</option>
-                                <option value="explorer">Explorer</option>
+                            <select class="form-select" name="gem_type" id="gem_type" onchange="calculateGemPrice()">
+                                <option value="intelligence" selected>Intelligence</option>
+                                <option value="love">Love</option>
+                                <option value="strength">Strength</option>
+                                <option value="luck">Luck</option>
                             </select>
                         </div>
                         <div class="mb-3">
@@ -68,6 +68,8 @@
                                 <option value="common" selected>Common</option>
                                 <option value="uncommon">Uncommon</option>
                                 <option value="rare">Rare</option>
+                                <option value="legendary">legendary</option>
+                                <option value="epic">epic</option>
                             </select>
                         </div>     
                         <div class="mb-3">
