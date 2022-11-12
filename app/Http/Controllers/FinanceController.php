@@ -177,10 +177,10 @@ class FinanceController extends Controller
                 $purchase->completed = true;
                 $purchase->save();
 
-                $balance = TokenBalance::where(
+                $balance = TokenBalance::where([
                     ['user_id', '=', $purchase->user_id],
                     ['token_id', '=', $purchase->token_id],
-                )->first();
+                ])->first();
                 $balance->amount += $purchase->amount;
                 $balance->save();
             }                        
