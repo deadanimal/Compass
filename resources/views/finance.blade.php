@@ -21,7 +21,7 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Amount</label>
-                            <input type="number" class="form-control" id="token_amount" min="1000" max="1000000000"
+                            <input type="number" class="form-control" name="amount" id="token_amount" min="1000" max="1000000000"
                                 step="100" onchange="calculateTokenPrice()">
                         </div>
                         <div class="mb-3">
