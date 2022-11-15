@@ -19,7 +19,7 @@
                                 onchange="calculateCompassPrice()">
                                 <option value="traveler" selected>Traveler</option>
                                 <option value="trader">Trader</option>
-                                <option value="diplomat">Diplomat</option>
+                                {{-- <option value="diplomat">Diplomat</option> --}}
                                 <option value="explorer">Explorer</option>
                             </select>
                         </div>
@@ -56,8 +56,8 @@
                             <label class="form-label">Gem Type</label>
                             <select class="form-select" name="gem_type" id="gem_type" onchange="calculateGemPrice()">
                                 <option value="intelligence" selected>Intelligence</option>
-                                <option value="love">Love</option>
-                                <option value="strength">Strength</option>
+                                {{-- <option value="love">Love</option> --}}
+                                <option value="experience">Experience</option>
                                 <option value="luck">Luck</option>
                             </select>
                         </div>
