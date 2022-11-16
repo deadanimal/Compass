@@ -14,6 +14,10 @@ class UserController extends Controller
         return view('home');
     }
 
+    public function faq(Request $request) {
+        return view('faq');
+    }    
+
     public function senarai_user(Request $request) {
         $users = User::all();
         return view('users', compact('users'));

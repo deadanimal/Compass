@@ -94,7 +94,7 @@
                                     <td>{{$lokasi->name}}</td>
                                     <td>{{$lokasi->coord->latitude}}, {{$lokasi->coord->longitude}}</td>
                                     <td>Distance</td>
-                                    <td>view</td>
+                                    <td><button type="button" class="btn btn-secondary">Secondary</button></td>
                                 </tr>
                                 @endforeach
                             </tbody>

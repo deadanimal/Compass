@@ -43,7 +43,7 @@
 
     <footer class="mt-3 py-3 bg-light">
         <div class="container">
-            <span class="text-muted">2022 &copy; DCB Platform Sdn. Bhd.
+            <span class="text-muted">2022 &copy; Metaverse Compass Labs
                 @role('admin')                    
                     <a href="/admin/lokasi">Lokasi</a> |
                     <a href="/admin/token">Token</a> | 
