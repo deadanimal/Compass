@@ -14,4 +14,24 @@
 
     </div>      
 </div>
+
+<script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js"
+        type="application/javascript"></script>
+
+<script>
+    console.log('lol');
+    const provider = new ethers.providers.Web3Provider(window.ethereum)
+
+    async function lol() {
+        await provider.getBlockNumber();
+    }    
+
+    lol();
+
+</script>  
+
+@endsection
+
+@section('scripts')
+      
 @endsection

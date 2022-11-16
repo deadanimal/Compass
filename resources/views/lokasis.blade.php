@@ -58,7 +58,7 @@
                                         <th scope="row">{{ $lokasi->id }}</th>
                                         <td>{{ $lokasi->name }}</td>
                                         <td>({{ $lokasi->coord->latitude }}, {{ $lokasi->coord->longitude }})</td>
-                                        <td><a href="/admin/lokasi/{{ $lokasi->id }}">View</a></td>
+                                        <td><a href="/lokasi/{{ $lokasi->id }}">View</a></td>
                                     </tr>
                                 @endforeach
                             </tbody>

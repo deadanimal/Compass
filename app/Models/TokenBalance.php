@@ -8,4 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class TokenBalance extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'user_id',
+        'token_id',
+        'amount',
+    ]; 
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }      
 }

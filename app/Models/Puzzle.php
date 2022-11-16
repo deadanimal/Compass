@@ -9,9 +9,9 @@ class Puzzle extends Model
 {
     use HasFactory;
 
-    public function lokasis()
+    public function lokasi()
     {
-        return $this->belongsToMany(Lokasi::class);
+        return $this->belongsTo(Lokasi::class);
     }       
 }
 

@@ -25,8 +25,13 @@ class Lokasi extends Model
 
     public function puzzles()
     {
-        return $this->belongsToMany(Puzzle::class);
+        return $this->hasMany(Puzzle::class);
     }    
+
+    public function answers()
+    {
+        return $this->hasMany(PuzzleAnswer::class);
+    }     
     
     public function newEloquentBuilder($query): SpatialBuilder
     {

@@ -35,6 +35,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('lokasi/{lat}/{lon}', [LokasiController::class, 'satu_coord']);
 
     Route::get('play', [PlayController::class, 'muka_play']);
+    Route::get('play/{lat}/{lon}', [PlayController::class, 'lat_lon_play']);
     Route::post('play/traveler', [PlayController::class, 'play_traveler']);
     Route::post('play/trader', [PlayController::class, 'play_trader']);
 
@@ -45,14 +46,13 @@ Route::middleware(['auth'])->group(function () {
 Route::middleware(['role:admin'])->prefix('admin')->group(function () {
     
     Route::get('compass', [CompassController::class, 'senarai_compass']);
-    
+
     Route::get('lokasi', [LokasiController::class, 'senarai']);
     Route::post('lokasi', [LokasiController::class, 'cipta']);    
     Route::post('lokasi/{id}/puzzle', [PlayController::class, 'cipta_puzzle']);
 
     Route::get('puzzle', [PlayController::class, 'senarai_puzzle']);
-    Route::post('puzzle', [PlayController::class, 'cipta_puzzle']);
-    Route::get('puzzle/{id}', [PlayController::class, 'satu_puzzle']);    
+    Route::post('puzzle', [PlayController::class, 'cipta_puzzle']);    
     
     Route::get('token', [FinanceController::class, 'senarai_token']);
     Route::get('user', [UserController::class, 'senarai_user']);

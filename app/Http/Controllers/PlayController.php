@@ -9,6 +9,9 @@ use App\Models\TokenBalance;
 use App\Models\Lokasi;
 use App\Models\Puzzle;
 use App\Models\PuzzleAnswer;
+use MatanYadaev\EloquentSpatial\Objects\Polygon;
+use MatanYadaev\EloquentSpatial\Objects\LineString;
+use MatanYadaev\EloquentSpatial\Objects\Point;
 
 class PlayController extends Controller
 {
@@ -25,6 +28,17 @@ class PlayController extends Controller
             'user', 'compas', 'wallets', 'balances'
         ]));
     }
+
+    public function lat_lon_play(Request $request) {
+        $lat = $request->route('lat');
+        $lon = $request->route('lon');
+        $user = $request->user();
+        $lokasis = Lokasi::whereDistance('coord', new Point($lat, $lon), '<', 0.01)->get();    
+
+        return view('play_lat_lon', compact([
+            'user', 'lokasis', 'lat', 'lon'
+        ]));
+    }    
 
     public function senarai_puzzle(Request $request) {
         $puzzles = Puzzle::all();

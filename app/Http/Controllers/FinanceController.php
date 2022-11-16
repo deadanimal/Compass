@@ -8,6 +8,8 @@ use RealRashid\SweetAlert\Facades\Alert;
 use DateTime;
 use DateTimeZone;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Crypt;
+
 
 use App\Models\Wallet;
 use App\Models\Token;
@@ -20,6 +22,8 @@ use App\Models\Invoice;
 class FinanceController extends Controller
 {
     public function muka_finance(Request $request) {
+        $lol = Crypt::encryptString('lol');
+
         $user = $request->user();
 
         $tokens = Token::all();
