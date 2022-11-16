@@ -35,14 +35,15 @@
                 </div>
                 <div class="card-body">
                     <div id="lat">Latitude: {{$lat}}</div>
-                    <div id="lon">Longitude: {{$lon}}</div>
-                    <button type="button" onclick="updateLocation()" class="btn btn-dark">Update Location</button>
+                    <div id="lon">Longitude: {{$lon}}</div>                    
                 </div>
+                <button type="button" onclick="updateLocation()" class="btn btn-warning">Update Location</button>
             </div>            
+            
 
             <div class="card mt-3">
                 <div class="card-header">
-                    Play Mode
+                    Current Stats
                 </div>
                 <div class="card-body">
                     - traveller, answer question, GOLD
@@ -72,7 +73,8 @@
                                     <th scope="col">#</th>
                                     <th scope="col">Name</th>
                                     <th scope="col">Coordinate</th>
-                                    <th scope="col">Distance</th>
+                                    <th scope="col">Puzzle</th>
+                                    <th scope="col">Puzzle Value</th>
                                     <th scope="col">Action</th>
                                 </tr>
                             </thead>
@@ -82,8 +84,9 @@
                                     <td>{{$loop->index + 1}}</td>
                                     <td>{{$lokasi->name}}</td>
                                     <td>{{$lokasi->coord->latitude}}, {{$lokasi->coord->longitude}}</td>
-                                    <td>Distance</td>
-                                    <td><button type="button" class="btn btn-secondary">View</button></td>
+                                    <td>{{$lokasi->puzzles->count()}}</td>
+                                    <td>{{$lokasi->puzzles->sum('gold_amount')}}</td>
+                                    <td><a href="/lokasi/{{$lokasi->id}}"><button type="button" class="btn btn-danger">View Location</button></a></td>
                                 </tr>
                                 @endforeach
                             </tbody>
