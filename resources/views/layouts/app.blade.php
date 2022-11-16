@@ -29,10 +29,10 @@
             </a>
 
             <ul class="nav nav-pills">
-                <li class="nav-item"><a class="nav-link" href="/compass">Compass</a></li>
-                <li class="nav-item"><a class="nav-link" href="/friend">Friend</a></li>
-                <li class="nav-item"><a class="nav-link" href="/token">Token</a></li>
-                <a href="/play"><button type="button" class="btn btn-success">Play</button></a>
+                <li class="nav-item"><a class="nav-link" href="/compass">Backpack</a></li>
+                <li class="nav-item"><a class="nav-link" href="/friend">Phone</a></li>
+                <li class="nav-item"><a class="nav-link" href="/token">Treasure Chest</a></li>
+                <a href="/play"><button type="button" class="btn btn-success">Explore</button></a>
             </ul>
         </header>
     </div>
