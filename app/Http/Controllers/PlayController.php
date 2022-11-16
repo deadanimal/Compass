@@ -19,13 +19,10 @@ class PlayController extends Controller
     public function muka_play(Request $request) {
         
         $user = $request->user();
-        $compas = Compass::where('user_id', $user->id)->get();
-        $wallets = Wallet::where('user_id', $user->id)->get();
-        $balances = TokenBalance::where('user_id', $user->id)->get();
-        $lokasis = Lokasi::all();
+        $quote = 'Did you know that there are three stones near in KL?';
 
         return view('play', compact([
-            'user', 'compas', 'wallets', 'balances'
+            'user', 'quote'
         ]));
     }
 
@@ -33,7 +30,7 @@ class PlayController extends Controller
         $lat = $request->route('lat');
         $lon = $request->route('lon');
         $user = $request->user();
-        $lokasis = Lokasi::whereDistance('coord', new Point($lat, $lon), '<', 0.01)->get();    
+        $lokasis = Lokasi::whereDistance('coord', new Point($lat, $lon), '<', 0.0005)->get();    
 
         return view('play_lat_lon', compact([
             'user', 'lokasis', 'lat', 'lon'

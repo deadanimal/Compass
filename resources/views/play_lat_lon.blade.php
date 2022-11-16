@@ -16,7 +16,7 @@
 
 @section('content')
     <div class="row">
-        <div class="col-8">
+        <div class="col-xl-8 col-xs-12 mt-3">
             <div class="card">
                 <div class="card-header">
                     Map Location
@@ -27,16 +27,16 @@
                 </div>
             </div>
         </div>
-        <div class="col-4">
+        <div class="col-xl-4 col-xs-12 mt-3">
 
             <div class="card">
                 <div class="card-header">
                     Current Location
                 </div>
                 <div class="card-body">
-                    <div id="lat"></div>
-                    <div id="lon"></div>
-                    <div id="res"></div>
+                    <div id="lat">Latitude: {{$lat}}</div>
+                    <div id="lon">Longitude: {{$lon}}</div>
+                    <button type="button" onclick="updateLocation()" class="btn btn-dark">Update Location</button>
                 </div>
             </div>            
 
@@ -56,19 +56,8 @@
     </div>
     <div class="row py-5">
 
-
-        <div class="col-4">
-
-            <div class="card">
-                <div class="card-header">
-                    Cipta Lokasi
-                </div>
-                <div class="card-body">
-                </div>
-            </div>
-
-        </div>        
-        <div class="col-8">
+     
+        <div class="col-xl-8 col-xs-12">
 
             <div class="card">
                 <div class="card-header">
@@ -112,6 +101,7 @@
 @section('scripts')
     <script src='https://unpkg.com/leaflet@1.8.0/dist/leaflet.js' crossorigin=''></script>
     <script>
+
         function getLocation() {
             if (navigator.geolocation) {
                 navigator.geolocation.watchPosition(showPosition);
@@ -122,36 +112,42 @@
         getLocation();
 
         function showPosition(position) {
-            map.panTo(new L.LatLng(position.coords.latitude, position.coords.longitude));
             document.getElementById("lat").innerHTML = "Latitude: " + position.coords.latitude; 
             document.getElementById("lon").innerHTML = "Longitude: " + position.coords.longitude;
-            // axios.post('/kedudukan', {
-            //         latitude: position.coords.latitude,
-            //         longitude: position.coords.longitude
-            //     })
-            //     .then(function(response) {
-            //         document.getElementById("res").innerHTML = response.data;
-            //         console.log(response);
-            //     })
-            //     .catch(function(error) {
-            //         console.log(error);
-            //     });
+            var newCoord = new L.LatLng(position.coords.latitude, position.coords.longitude);            
+            userLocation.setLatLng(newCoord);
+        }
+
+        function showPosition2(position) {
+            window.location.href = '/play/' + position.coords.latitude + '/' + position.coords.longitude;
+        }        
+
+        function updateLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.watchPosition(showPosition2);
+                
+            } else {
+                console.log("Geolocation is not supported by this browser.");
+            }            
         }
 
         let map, markers = [];
+        let userLocation;
 
         function initMap() {
             map = L.map('map', {
                 center: {
-                    lat: 28.626137,
-                    lng: 79.821603,
+                    lat: {{ $lat }},
+                    lng: {{ $lon }},
                 },
-                zoom: 15
+                zoom: 18
             });
 
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 attribution: '© OpenStreetMap'
             }).addTo(map);
+
+            userLocation = L.marker([0,0]).addTo(map);
 
             map.on('click', mapClicked);
             initMarkers();
@@ -160,25 +156,26 @@
 
 
         function initMarkers() {
-            const initialMarkers = '';
+            const initialMarkers = {!! json_encode($lokasis) !!};
+            console.log(initialMarkers);
 
             for (let index = 0; index < initialMarkers.length; index++) {
 
-                const data = initialMarkers[index];
-                const marker = generateMarker(data, index);
-                marker.addTo(map).bindPopup(`<b>${data.position.lat},  ${data.position.lng}</b>`);
-                map.panTo(data.position);
+                var data = initialMarkers[index];                
+                var newCoord = new L.LatLng(data.coord.coordinates[0], data.coord.coordinates[1]);          
+                var marker = L.circle(newCoord);
+                marker.addTo(map);
+                console.log(marker);
                 markers.push(marker)
             }
         }
 
-        function generateMarker(data, index) {
-            return L.marker(data.position, {
-                    draggable: data.draggable
-                })
-                .on('click', (event) => markerClicked(event, index))
-                .on('dragend', (event) => markerDragEnd(event, index));
-        }
+        // function generateMarker(data, index) {
+        //     var newCoord = new L.LatLng(data.coord.coordinates[0], data.coord.coordinates[1]);          
+        //     return L.marker(newCoord)
+        //         // .on('click', (event) => markerClicked(event, index))
+        //         // .on('dragend', (event) => markerDragEnd(event, index));
+        // }
 
         function mapClicked($event) {
             console.log(map);

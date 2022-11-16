@@ -13,7 +13,8 @@ class Wallet extends Model
     protected $fillable = [
         'user_id',
         'address',
-        'key',
+        'public_key',
+        'private_key',
     ];    
 
     public function user()

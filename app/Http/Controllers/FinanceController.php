@@ -9,6 +9,7 @@ use DateTime;
 use DateTimeZone;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Crypt;
+use kornrunner\Ethereum\Address;
 
 
 use App\Models\Wallet;
@@ -27,6 +28,7 @@ class FinanceController extends Controller
         $user = $request->user();
 
         $tokens = Token::all();
+
         foreach ($tokens as $token) {
             $balance_exists = TokenBalance::where([
                 ['user_id', '=', $user->id],
@@ -40,11 +42,15 @@ class FinanceController extends Controller
             }
         }
 
-
-        $wallets = Wallet::where('user_id', $user->id)->get();
-        //$balances = TokenBalance::where('user_id', $user->id)->get();
-        //$txs = TokenTransaction::where('user_id', $user->id)->get();
-        $purchases = TokenPurchase::where('user_id', $user->id)->get();
+        if(Wallet::where('user_id', $user->id)->exists() == false) {
+            $address = new Address();
+            Wallet::create([
+                'user_id' => $user->id,
+                'address' => $address->get(),
+                'public_key' => $address->getPublicKey(),
+                'private_key' => $address->getPrivateKey()
+            ]);
+        }
 
         $gold_balance = TokenBalance::where([
             ['user_id','=', $user->id],
@@ -57,7 +63,7 @@ class FinanceController extends Controller
         ])->first();        
 
         return view('finance', compact([
-            'user', 'wallets', 'gold_balance', 'wisdom_balance','purchases'
+            'user', 'gold_balance', 'wisdom_balance',
         ]));
     }
 

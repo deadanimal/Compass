@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="row">
-        <div class="col-3">
+        <div class="col-xl-3 col-xs-12 mt-3">
 
             <div class="card">
                 <div class="card-header">
@@ -42,7 +42,7 @@
             </div>
 
         </div>
-        <div class="col-3">
+        <div class="col-xl-3 col-xs-12 mt-3">
 
             <div class="card">
                 <div class="card-header">
@@ -82,28 +82,14 @@
                 </div>
             </div>
         </div>
-        <div class="col-3">
+        <div class="col-xl-3 col-xs-12 mt-3">
         
         </div>
     </div>
 
     <div class="row py-5">
-        <div class="col-4">
 
-            <div class="card">
-                <div class="card-header">
-                    Play Stats
-                </div>
-                <div class="card-body">
-                    <form action="/logout" method="POST">
-                        @csrf
-                        <button type="submit" class="btn btn-danger">Log Out</button>
-                    </form>
-                </div>
-            </div>
-
-        </div>
-        <div class="col-8">
+        <div class="col-xl-8 col-xs-12 mt-3">
 
             @if ($compas->count() > 0)
                 <div class="card">
@@ -151,6 +137,23 @@
             @endif
 
         </div>
+
+        <div class="col-xl-4 col-xs-12 mt-3">
+
+            <div class="card">
+                <div class="card-header">
+                    Play Stats
+                </div>
+                <div class="card-body">
+                    <form action="/logout" method="POST">
+                        @csrf
+                        <button type="submit" class="btn btn-danger">Log Out</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+
     </div>
 @endsection
 

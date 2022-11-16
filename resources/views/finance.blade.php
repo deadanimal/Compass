@@ -78,7 +78,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($purchases as $purchase)
+                                        @foreach($user->purchases as $purchase)
                                         <tr>
                                             <td>{{$purchase->created_at}}</td>
                                             <td>
